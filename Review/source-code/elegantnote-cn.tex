@@ -1,0 +1,337 @@
+%!TEX program = xelatex
+\documentclass[cn,hazy,black,normal,14pt]{elegantnote}
+\usepackage{graphicx}
+\usepackage{subfigure}
+\usepackage{ulem}
+\usepackage[noend]{algpseudocode}
+\usepackage{algorithmicx,algorithm}
+\usepackage{xeCJKfntef}
+\newcommand*\blank{\CJKunderline[hidden=false, skip=false, thickness=1pt]}
+% 允许跨页公式
+\allowdisplaybreaks[3]
+\title{2021春·软件工程导论1-6章复习}
+
+\author{jzpa}
+\institute{Hiffu Club}
+
+%\version{1.0}
+%\date{\zhtoday}
+
+\begin{document}
+
+\maketitle
+
+\centerline{
+  \includegraphics[width=0.2\textwidth]{logo-blue.png}
+}
+\begin{remark}
+    前面几章概念性的东西特别多，但是应该不会出大题。所以特别在此汇总所有的概念。此处主要涉及可能考到填空题的部分，针对选择和判断题需要采取另外的复习策略
+\end{remark}
+\section{软件的本质}
+    \subsection{软件的本质}
+    现在的软件具有\blank{\textbf{产品}}和\blank{\textbf{产品交付载体}}的作用
+        \subsubsection{定义软件}
+        软件是：(1) \blank{指令的集合（计算机程序）}，通过执行这些指令可以\blank{满足预期的特性、功能和性能需求}；
+        (2) \blank{数据结构}，使得程序可以\blank{合理利用信息}；
+        (3) \blank{软件描述信息}，它以\blank{硬拷贝}和\blank{虚拟形式}存在，用来描述程序的\blank{操作}和\blank{使用}
+
+        图1-1描绘了硬件的失效率，该失效率是\blank{时间}的函数。这个名为\blank{“浴缸曲线”}的关系图显示\dots
+        然而，随着时间推移，因为\blank{灰尘}、\blank{振动}、\blank{不当使用}、\blank{温度超限}以及其他环境问题
+        所造成的\blank{硬件组件损耗累积}的效果，使得\blank{失效率}再次抬高。简而言之，硬件开始\blank{\textbf{磨损}}了
+
+        软件不会磨损，但是\blank{软件退化}的确存在。
+
+        \subsubsection{软件应用领域}
+        软件有\blank{七}个大类，分别为\blank{系统软件}、\blank{应用软件}、\blank{工程/科学软件}、\blank{嵌入式软件}、
+        \blank{产品线软件}、\blank{Web/移动App}、\blank{人工智能软件}
+
+        \subsubsection{遗留软件}
+        这些旧的系统，通常被称为\blank{遗留软件(legacy software)}
+
+    \subsection{软件的变更本质}
+        \subsubsection{WebApp}
+        基于\blank{Web}的系统和应用软件（ 我们将这些总称为 \blank{WebApp} ）诞生了
+
+        \subsubsection{移动App}
+        术语 App 已经演化为在\blank{移动平台（例如iOS、Android或Windows Mobile）}上专门设计的软件
+
+        \subsubsection{云计算}
+        \blank{云计算}包括\blank{基础设施}或\blank{“生态系统”}，
+        它能使得任何用户在任何地点都可以使用\blank{计算设备}来共享广泛的\blank{计算资源}
+
+        \subsubsection{产品线软件}
+        美国卡内基·梅隆大学软件工程研究所（SEI）将\blank{软件产品线}定义为“一系列软件密集型系统，
+        可以共享一组公共的可管理的特性，这些特性可以满足特定市场或任务的特定需求，
+        并以预定的方法从一组公共的核心资源开发出来。”
+
+        \begin{remark}
+            意外效应法则：某些新科技的发明创造会给其他一些看似无关的技术领域、商业企业、公众甚至整个社会文化带来深远而出人意料的影响和作用。
+            \begin{itemize}
+                \item 比如，图像处理软件最初设计是为了动画产业的应用。如photoshop， 后来这些软件逐渐大众化，现在很多人都会用这些软件做一些基础的照片修改处理。结合数码相机，使大家拍出来相片更好看。
+                \item 比如，没有人曾想到软件可嵌入到各种系统中，这些系统包括交通运输、医疗、远程通信、军事、工业、娱乐、办公设备等等。
+                \item 比如，GPS系统最初用于军事上，更准确的定位敌人的位置，以消灭之，现在已经广泛应用于日常生活，比如开车时用的GPS导航仪，CDMA制式的手机必须有GPS才能使用。
+                \item 比如，Java语言最初是设计在机顶盒这样的设备上使用，没想到它后来成为互联网时代的主流开发语言之一
+            \end{itemize}
+        \end{remark}
+        
+\section{软件工程}
+    \subsection{定义软件工程学科}
+    软件工程是：（1）将\blank{系统化的}、\blank{规范化的}、\blank{可量化的}的方法
+    应用于软件的\blank{开发}、\blank{运行}和\blank{维护}，即将\blank{工程化方法}应用于软件；
+    （2）\blank{对（1）中所述方法的研究}
+
+    软件工程层次图（从高到低）：\blank{工具}、\blank{方法}、\blank{过程}、\blank{质量关注点}
+
+    软件工程的基础是\blank{过程层}
+
+    \blank{软件工程方法}为构建软件提供技术上的支持
+
+    \blank{软件工程工具}为过程和方法提供自动化或半自动化的支持。这些工具可以集成起来，使得一个工具产生的信息可以被另外一个工具使用，
+    这样就建立了软件开发的支撑系统，称为\blank{计算机辅助软件工程}
+
+    \subsection{软件过程}
+    \blank{软件过程}是工作产品构建时所执行的一系列活动、动作和任务的集合。
+
+    \blank{活动}主要实现宽泛的目标。\blank{动作，如体系结构设计}包含了主要工作产品生产过程中的一系列任务。\blank{任务}关注小而明确的目标，能够产生实际产品。
+
+        \subsubsection{过程框架}
+        \blank{过程框架}定义了若干个\blank{框架活动}，为实现\blank{完整}的软件工程过程建立了基础。
+        此外，过程框架还包含一些适用于整个软件过程的\blank{普遍性活动}。一个通用的软件工程过程通常包含以下五个活动：
+        \blank{沟通}、\blank{策划}、\blank{建模}、\blank{构建}、\blank{部署}。这些活动不断重复迭代，每次项目迭代都会产生一个\blank{软件增量}，每一个实现了部分的软件特性和功能
+
+        \subsubsection{普适性活动}
+        软件工程过程框架活动由很多\blank{普适性活动}来补充实现。通常，这些\blank{普适性活动}贯穿软件项目始终，经典包括如下活动：
+        \blank{软件项目跟踪和控制}、\blank{风险管理}、\blank{软件质量保证}、\blank{技术评审}、\blank{测量}、\blank{软件配置管理}、\blank{可复用管理}、\blank{工作产品的准备和生产}。
+
+        \subsubsection{过程的适应性调整}
+
+    \subsection{软件工程实践}
+    通用的框架活动——\blank{沟通}、\blank{策划}、\blank{建模}、\blank{构建}、\blank{部署}——和\blank{普适性活动}构成了软件工程工作的体系结构的轮廓。
+
+        \subsubsection{实践的精髓}
+
+        \subsubsection{通用原则}
+        \blank{原则}这个词在字典里的定义是“某种思想体系所需要的重要的根本规则或者假设”，包括
+        \begin{itemize}
+            \centering
+            \item[第1原则] \blank{存在价值}
+            \item[第2原则] \blank{保持简洁}
+            \item[第3原则] \blank{保持愿景}
+            \item[第4原则] \blank{关注使用者}
+            \item[第5原则] \blank{面向未来}
+            \item[第6原则] \blank{提前计划复用}
+            \item[第7原则] \blank{认真思考}     
+        \end{itemize}
+        
+
+        \subsection{软件开发神话}
+        \blank{软件开发神话}，即关于软件及其开发过程的一些被人盲目相信的说法，这可以追溯到计算技术发展的初期。
+
+    \begin{remark}
+        SafeHome项目：如何开始一个软件项目，需要熟记该案例
+    \end{remark}
+
+\section{软件过程结构}
+    \subsection{通过过程模型}
+    \begin{remark}
+        软件过程示意图：熟悉一下形式
+    \end{remark}
+    每个框架活动由一系列\blank{软件工程动作}构成；每个软件工程动作由\blank{任务集}来定义。
+    任务集明确了\blank{工作任务}、\blank{工作产品}、\blank{质量保证点}、\blank{项目里程碑}
+
+    \blank{过程流}描述了在执行顺序和执行时间上如何组织框架中的\blank{活动}、\blank{动作}、\blank{任务}
+
+    有四种过程流，分别为\blank{线性过程流}、\blank{迭代过程流}、\blank{演化过程流}、\blank{并行过程流}，\textbf{学会它们的辨析}
+
+    \subsection{定义框架活动}
+
+    \subsection{明确任务集}
+    \blank{任务集}定义了为达到一个软件工程动作的目标所需要完成的工作
+
+    \begin{remark}
+        熟悉一下任务集案例
+    \end{remark}
+
+    \subsection{过程模式}
+    \blank{过程模式}描述了软件工程工作中遇到的过程相关的问题，明确了问题环境并给出了针对该问题的一种或几种可证明的解决方案。
+
+    \begin{remark}
+        过程模式有一个描述模板，需要熟悉记忆。
+    \end{remark}
+
+\section{过程模型}
+\begin{remark}
+    这部分感觉以概念理解为主，具体的考法可能会比较灵活，没法在这里直接给出填空预测，直接过一遍目录最为高效
+\end{remark}
+    \subsection{惯用过程模型}
+        \subsubsection{瀑布模型}
+        瀑布模型，又称\blank{经典生命周期}——准确的需求
+        
+        V模型
+        \subsubsection{增量过程模型}
+        增量模型，第一个往往是核心产品
+        \subsubsection{演化过程模型}
+        演化模型：\blank{原型开发：原型开发范型}、\blank{螺旋模型}
+        \subsubsection{并发模型}
+        并发开发模型 建模 像一个状态机/流水线
+        \subsubsection{演化过程的最终评述}
+    \subsection{专用过程模型}
+        \subsubsection{基于构件的开发}
+        可以理解为已经有现成的构件了
+        \subsubsection{形式化方法模型}
+        形式化方法模型
+    \subsection{统一过程}
+    就是孕育除了UML那个，串联几乎全书
+        \subsubsection{统一过程的简史}
+        \subsubsection{统一过程的阶段}
+    \subsection{产品和过程}
+
+\section{敏捷开发}
+    \subsection{什么是敏捷}
+    包括：……，\blank{利益相关者}之间的有效沟通，将\blank{客户}作为开发团队的一部分，组件\blank{高度自主}的项目团队，最重要的是，\blank{快速交付给客户可运行的软件增量}
+    \subsection{敏捷及变更成本}
+    变更成本随着计划的进展成\blank{非线性}增长
+    \begin{remark}
+        熟悉一下那张曲线图
+    \end{remark}
+    \subsection{什么是敏捷过程}
+    任何\blank{敏捷软件过程}的特征都是\blank{以某种方式提出若干关键假设}
+        \subsubsection{敏捷原则}
+        \begin{remark}
+            有12条呢，背个毛线。不过可以记忆一些关键点。
+        \end{remark}
+        即使在开发的后期，也欢迎\blank{需求变更}。敏捷过程利用\blank{变更}为客户创造竞争优势；
+
+        经常交付\blank{可执行软件}，……，交付的时间间隔越\blank{短}越好
+
+        在整个项目开发期间，\blank{业务人员}和\blank{开发人员}必须天天都在一起工作
+
+        \blank{可运行软件}是进度的首要度量标准
+
+        敏捷过程提倡\blank{可持续}的\blank{开发速度}。\blank{责任人}、\blank{开发者}、\blank{用户}应该能够长期保持稳定的开发速度
+
+        \blank{简单}——使不必做的工作最大化的艺术——是必要的
+
+        构造\blank{可以满足人员及团队需求}的过程模型，而非其他可选的过程模型
+
+    \subsection{极限编程}
+    使用最广泛的敏捷过程是\blank{极限编程}
+        \subsubsection{极限编程过程}
+        极限编程过程分为四步：\blank{XP策划}、\blank{XP设计}、\blank{XP编程}、\blank{XP测试}
+        
+        其中针对\blank{XP设计}，\blank{重构}是以不改变代码外部行为而改进其内部结构的方式来修改软件系统的过程
+
+        \subsubsection{工业/行业极限编程}
+        \blank{IXP}包含六个新实践：\blank{准备评估}、\blank{项目社区}、\blank{项目特许}、\blank{测试驱动管理}、\blank{回顾}、\blank{持续学习}
+    \subsection{其它敏捷过程模型}
+        \subsubsection{Scrum}
+        Scrum原则与\blank{敏捷宣言}是一致的
+
+        开发活动由\blank{工作单元}组成
+
+        \blank{测试和文档编址}工作贯穿始终
+        
+        发生于一个过程模式中的工作任务称为一个\blank{冲刺}，其来源于\blank{待定项}中定义的需求
+
+        \blank{例会时间很短}，有时甚至站立开会
+
+        在规定时间段内将\blank{演示软件}交付给用户
+
+        \subsubsection{动态系统开发方法DSDM}
+        \begin{remark}
+            在很多方面类似极限编程，有九条基本原则……
+        \end{remark}
+        用户必须\blank{持续参与}
+
+        必须授予DSDM团队\blank{指定决策}的权力
+
+        注重产品的\blank{经常交付}
+
+        \blank{满足业务用途}是接受交付品的主要依据
+
+        \blank{迭代}和\blank{增量式开发}对得到正确的业务解决方案是必不可少的
+
+        开发过程中的所有变化\blank{可逆}
+
+        在高层次上指定需求的\blank{基线}
+
+        \blank{测试}自始至终贯穿于开发周期之中
+
+        \blank{所有项目涉众间的通力合作}是不可或缺的
+
+        \subsubsection{敏捷建模}
+        \begin{remark}
+            TMD又一堆
+        \end{remark}
+        敏感建模原则包括：有\blank{目的}的建模、使用\blank{多个模型}、\blank{轻装上阵}、\blank{内容}重于\blank{表述形式}、\blank{理解模型及工具}、适应\blank{本地需要}
+
+        \subsubsection{敏捷统一过程AUP}
+        \begin{remark}
+            采用在“大型上链接”以及“小型上迭代”
+        \end{remark}
+        执行活动：\blank{建模}、\blank{实现}、\blank{测试}、\blank{部署}、\blank{配置及项目管理}、\blank{环境管理}
+
+\section{软件工程的人员方面}
+    \subsection{软件工程师的特质}
+    \subsection{软件工程心理学}
+    \begin{remark}
+        记得有“软件工程心理学”、“跨界角色”这种东西就好
+    \end{remark}
+    \subsection{软件团队}
+    \begin{remark}
+        直接背PPT，要么干脆不背
+    \end{remark}
+    团队毒性：\blank{混乱的工作环境}、\blank{造成团队成员分裂的挫折}、\blank{支离破碎或者协调不当的软件过程}、\blank{团队中角色的模糊定义}、\blank{持续且重复性的失败}
+
+    影响团队结构的因素：……\blank{团队寿命}：团队成员合作的时间、\blank{问题可规模化的程度}、\blank{交付日期要求的严格程度}……
+
+    \subsection{团队结构}
+    包括\blank{封闭模式}、\blank{随机模式}、\blank{开放模式}、\blank{同步模式}
+
+    \subsection{敏捷团队}
+        \subsubsection{通用敏捷团队}
+        \blank{敏捷团队}：小型的并充满活力的项目团队
+
+        敏捷团队都是\blank{自组织}的
+
+        \subsubsection{XP 团队}
+        \begin{remark}
+            直接背PPT，要么干脆不背，后面几个也是
+        \end{remark}
+        \subsubsection{社交媒体的影响}
+
+    \subsection{软件工程中云的应用}
+    就是\blank{云计算}
+
+    \subsection{协作工具}
+    \begin{remark}
+        虽然没有标注，但感觉有可能考
+    \end{remark}
+    \blank{命名空间}使项目团队可以用加强安全性和保密性的方式存储工作产品
+    
+    \blank{进度表}可协调项目事件
+    
+    \blank{模板}可以使团队成员在创造工作产品时保持一致的外形和结构
+    
+    \blank{度量支持}可以量化每个成员的贡献
+    
+    \blank{交流分析}会跟踪整个团队的交流，并分离出模式，应用于需要解决的问题或难题。
+    
+    \blank{工件收集}显示出工作产品的依赖性
+
+    \subsection{全球化团队}
+    概念：\blank{全球化软件开发（GSD）团队}
+
+    决策问题因为以下四个因素而变得复杂
+
+    问题的复杂性
+
+    与决策相关的不确定性和风险
+
+    \blank{结果不确定法则}：工作相关的决策会对另外的项目目标产生意外的影响。
+    
+    对问题的不同看法导致不同结论
+    
+    对于GSD团队，协调、合作和沟通方面的挑战对决策具有深远的影响
+
+\end{document}
